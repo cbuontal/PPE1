@@ -7,3 +7,7 @@ On peut savoir si la version clonée localement est à jour avec la commande `gi
 Après avoir modifié le journal de bord comme dans l'exercice 3.c, la commande `git status` n'affiche aucun changement... Est-ce qu'il faut patienter et retenter plus tard ? :confused:
 
 ![la commande ne détecte pas les modifications de la version en ligne](erreur_synchro.png)
+
+En utilisant la commande `git log`, je vois qu'aucun de mes commits n'est détecté. Pourtant j'ai modifié le journal de bord plusieurs fois, ajouté des images...
+
+![git log ne détecte pas les commits faits en ligne](erreur_log.png)
