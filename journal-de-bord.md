@@ -16,6 +16,7 @@ En utilisant la commande `git log`, je vois qu'aucun de mes commits n'est détec
 
 J'ai réfléchi et j'ai pensé à utiliser `git fetch` pour mettre à jour les métadonnées. Je me suis trompé dans la 3.b, c'est la commande `git fetch` qui permet de savoir si on est en retard par rapport à la version en ligne ! On lance `git fetch` puis `git status`. Ensuite pour répercuter les changements en ligne sur ma machine, j'exécute `git pull`. :relieved:
 <<<<<<< HEAD
+<<<<<<< HEAD
 
 ## Manipulation de Git 2
 
@@ -31,3 +32,5 @@ CECI est une ErrEUR
 # Séance 3
 
 
+=======
+>>>>>>> parent of aca023c (CECI EST UNE ERREUR)
