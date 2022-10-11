@@ -24,7 +24,7 @@ J'ai réfléchi et j'ai pensé à utiliser `git fetch` pour mettre à jour les m
 
 Pour faire la commande `git push` après avoir créé le tag, il fallait créer un Personal Acces Token (PAT), car l'authentification par mot de passe ne fonctionne plus depuis 2021 en ligne de commande...
 
-Pour obtenir le SHA du commit erroné, on exécute `git log`. Puis on peut annuler le commit avec la commande `git revert <SHA du commit>`.
+Pour obtenir le SHA du commit erroné, on exécute `git log`. Puis on peut annuler le commit avec la commande `git revert <SHA du commit>`. Finalement j'ai dû faire `git add journal-de-bord.md` puis `git revert --continue` pour bien que ça marche. Et enfin `git push`.
 
 
 CECI est une ErrEUR
