@@ -22,3 +22,7 @@ J'ai réfléchi et j'ai pensé à utiliser `git fetch` pour mettre à jour les m
 
 Pour faire la commande `git push` après avoir créé le tag, il fallait créer un Personal Acces Token (PAT), car l'authentification par mot de passe ne fonctionne plus depuis 2021 en ligne de commande...
 CECI est une ErrEUR
+
+# Séance 3
+
+
