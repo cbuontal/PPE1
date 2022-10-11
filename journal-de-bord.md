@@ -15,6 +15,7 @@ En utilisant la commande `git log`, je vois qu'aucun de mes commits n'est détec
 ![git log ne détecte pas les commits faits en ligne](erreur_log.png)
 
 J'ai réfléchi et j'ai pensé à utiliser `git fetch` pour mettre à jour les métadonnées. Je me suis trompé dans la 3.b, c'est la commande `git fetch` qui permet de savoir si on est en retard par rapport à la version en ligne ! On lance `git fetch` puis `git status`. Ensuite pour répercuter les changements en ligne sur ma machine, j'exécute `git pull`. :relieved:
+<<<<<<< HEAD
 
 ## Manipulation de Git 2
 
