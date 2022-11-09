@@ -8,11 +8,11 @@ On peut savoir si la version clonée localement est à jour avec la commande `gi
 
 Après avoir modifié le journal de bord comme dans l'exercice 3.c, la commande `git status` n'affiche aucun changement... Est-ce qu'il faut patienter et retenter plus tard ? :confused:
 
-![la commande ne détecte pas les modifications de la version en ligne](erreur_synchro.png)
+![la commande ne détecte pas les modifications de la version en ligne](images/erreur_synchro.png)
 
 En utilisant la commande `git log`, je vois qu'aucun de mes commits n'est détecté. Pourtant j'ai modifié le journal de bord plusieurs fois, ajouté des images...
 
-![git log ne détecte pas les commits faits en ligne](erreur_log.png)
+![git log ne détecte pas les commits faits en ligne](images/erreur_log.png)
 
 J'ai réfléchi et j'ai pensé à utiliser `git fetch` pour mettre à jour les métadonnées. Je me suis trompé dans la 3.b, c'est la commande `git fetch` qui permet de savoir si on est en retard par rapport à la version en ligne ! On lance `git fetch` puis `git status`. Ensuite pour répercuter les changements en ligne sur ma machine, j'exécute `git pull`. :relieved:
 
