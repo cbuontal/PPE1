@@ -45,3 +45,11 @@ En tout cas, la question de pose du ou des mot(s) à choisir en chinois. D'aprè
 - 入境 rùjìng : je ne le connaissais pas. Littéralement, "entrer dans les frontières". Le sens me paraît plus concret que le terme précédent. Je vais regarder dans un corpus standard ses cooccurrents.
 
 Je vais commencer la collecte d'URLs avec le mot-clé 移民 sur des sources de RPC pour commencer. Peut-être que je changerai d'avis sur le mot-clé ou la provenance des sources pendant les vacances de la Toussaint...
+
+## Séance du 7 décembre
+
+Aujourd'hui j'ai été confronté à des problèmes d'encodage de mes textes chinois. Je récupère d'abord la page au format texte avec `curl`, et il arrive des erreurs d'encodage. Je peux enchaîner avec `iconv` pour convertir de l'encodage détecté vers UTF-8. Et alors j'enchaîne à nouveau avec `lynx -dump`. 
+
+Cependant il arrive aussi que `curl` et `lynx` n'arrivent pas à accéder au contenu de la page, parce que `lynx` ne supporte pas le JavaScript. Face à ce problème, je pense que le plus simple est de remplacer les quelques URLs concernées (entre 2 et 5).
+
+Ensuite j'ai voulu utiliser `grep` avec les caractères chinois, notamment avec l'option `grep -P`, mais sur Mac j'obtiens une erreur car l'option est invalide. 
