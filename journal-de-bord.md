@@ -53,3 +53,22 @@ Aujourd'hui j'ai été confronté à des problèmes d'encodage de mes textes chi
 Cependant il arrive aussi que `curl` et `lynx` n'arrivent pas à accéder au contenu de la page, parce que `lynx` ne supporte pas le JavaScript. Face à ce problème, je pense que le plus simple est de remplacer les quelques URLs concernées (entre 2 et 5).
 
 Ensuite j'ai voulu utiliser `grep` avec les caractères chinois, notamment avec l'option `grep -P`, mais sur Mac j'obtiens une erreur car l'option est invalide. 
+
+## Le 29 décembre 2022
+
+Bonnes fêtes !
+
+Autrement j'ai enfin réglé mon problème de `grep` avec les caractères chinois. J'ai réinstallé `grep` avec la commande `brew install grep`. Le manuel a été mis à jour, et il indique notamment que `egrep` est obsolète et qu'il faut maintenant utiliser `grep -E`. J'aurais aimé le découvrir plus tôt pour le cours de Langages réguliers...
+
+Cette mise à jour a aussi ajouté l'option `-P` dans le manuel. Mais j'ai longtemps eu l'erreur : `grep: conflicting matchers specified`. En tatônnant, je me suis aperçu que je ne pouvais pas combiner les options `-E` et `-P` en même temps. De toute façon pour le problème qui m'intéresse, je n'ai pas besoin de la première option. Je peux donc capturer les séquences qui m'intéressent pour constuire le tableau de concordances en chinois avec la commande suivante : 
+`grep -Po "(\p{Han}){0,5}$motif_recherche(\p{Han}){0,5}" $fichier_dump`
+
+Plusieurs observations sur cette ligne :
+- Il faut utiliser `\p{Han}` et non `\P{Han}`; j'ai l'impression que la deuxième expression ne capture que la ponctuation spécifique au chinois,
+- Il ne faut pas utiliser les frontières de mot `\b`; soudainement la ligne de code a fonctionné quand j'ai enlevé les frontières de mot. Est-ce que c'est parce que je n'avais plus l'option `-E`, ou est-ce que les frontières de mot en chinois ne sont pas bien gérées par `grep -E` ? Certainement un mélange des deux.
+
+Ensuite, j'ai dû me plonger un peu dans le fonctionnement de `sed`, non seulement pour faire un chercher / remplacer simple, mais aussi avec les parenthèses qui permettent de capturer des morceaux de texte pour les réagencer. J'enchaîne le `grep` plus haut avec la commande suivante : 
+`sed -E "s/(.*)($motif)(.*)/<tr><td>\1<\/td><td>\2<\/td><td>\3<\/td><\/tr>/"`
+
+Dans le `sed` sans option, il faudrait échapper les parenthèses capturantes avec un antislash comme ceci :
+`sed "s/\(.*\)\($motif\)\(.*\)/<tr><td>\1<\/td><td>\2<\/td><td>\3<\/td><\/tr>/"`, mais c'est immonde.
