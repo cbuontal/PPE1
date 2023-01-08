@@ -72,3 +72,21 @@ Ensuite, j'ai dû me plonger un peu dans le fonctionnement de `sed`, non seuleme
 
 Dans le `sed` sans option, il faudrait échapper les parenthèses capturantes avec un antislash comme ceci :
 `sed "s/\(.*\)\($motif\)\(.*\)/<tr><td>\1<\/td><td>\2<\/td><td>\3<\/td><\/tr>/"`, mais c'est immonde.
+
+## Le 8 janvier 2023
+
+J'ai réussi à construire mon tableau complet, jusqu'aux concordances ! J'ai dû lutter un peu avec les commandes `grep` et `sed`.
+
+Je me suis aperçu que la variable globale `LANG` avait un impact sur le fonctionnement de ces commandes. Par exemple, `sed -E` nécessite d'avoir fait `export LANG=C` pour son bon fonctionnement. Autrement j'obtiens l'erreur "illegal byte sequence". Mais l'utilisation de `grep -P` avec les expression `\p{Han}` ne fonctionne pas avec `LANG=C`. J'ai donc encadré le script de traitement des URLs (pour le chinois) de :
+```
+lang_base=$LANG
+export LANG=C
+[...]
+export LANG=lang_base
+```
+
+Et au besoin je précède les commandes "à risque" de `LANG=...`, ce qui donne dans le fichier concordances.sh :
+
+`LANG=zh_CN.UTF-8 grep -Po "(\p{Han}{1,5} ){0,5}$motif( \p{Han}{1,5}){0,5}" $fichier_text | LANG=C sed -E "s/(.*)($motif)(.*)/[formatage HTML]/"`
+
+De cette façon, j'ai la bonne valeur de la variable globale `LANG` pour chaque commande.
